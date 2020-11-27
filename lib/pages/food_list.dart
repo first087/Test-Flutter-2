@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_restaurant/models/food_item.dart';
+import 'package:my_restaurant/pages/food_detail.dart';
 import 'package:my_restaurant/services/api.dart';
 
 class FoodListPage extends StatefulWidget {
@@ -9,8 +10,6 @@ class FoodListPage extends StatefulWidget {
 }
 
 class _FoodListPageState extends State<FoodListPage> {
-  List<String> _foodList = ['ข้าวมันไก่', 'ข้าวขาหมู', 'ข้าวหมูแดง'];
-
   Future<List<FoodItem>> _futureFoodList;
 
   @override
@@ -30,6 +29,11 @@ class _FoodListPageState extends State<FoodListPage> {
 
   void _handleListViewClick(FoodItem foodItem) {
     print(foodItem.name);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => FoodDetailPage(foodItem: foodItem),
+        ));
   }
 
   @override
