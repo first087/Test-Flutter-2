@@ -4,13 +4,13 @@ class FoodItem {
   String name;
   int price;
   String image;
-  int imageCount;
+  int itemCount;
 
   FoodItem({
     @required this.name,
     @required this.price,
     @required this.image,
-    @required this.imageCount,
+    @required this.itemCount,
   });
 
   factory FoodItem.fromJson(Map<String, dynamic> json) {
@@ -18,7 +18,7 @@ class FoodItem {
       name: json['name'],
       price: json['price'],
       image: json['image'],
-      imageCount: 0,
+      itemCount: 0,
     );
   }
 }

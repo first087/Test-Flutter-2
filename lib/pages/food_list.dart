@@ -28,6 +28,10 @@ class _FoodListPageState extends State<FoodListPage> {
     print(_futureFoodList);
   }
 
+  void _handleListViewClick(FoodItem foodItem) {
+    print(foodItem.name);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,9 +64,7 @@ class _FoodListPageState extends State<FoodListPage> {
                   margin: EdgeInsets.all(8.0),
                   elevation: 2.0,
                   child: InkWell(
-                    onTap: () {
-                      print(foodList[index].name);
-                    },
+                    onTap: () => _handleListViewClick(foodList[index]),
                     child: Row(
                       children: <Widget>[
                         Image(
@@ -71,12 +73,22 @@ class _FoodListPageState extends State<FoodListPage> {
                           fit: BoxFit.cover,
                           image: NetworkImage(foodList[index].image),
                         ),
+                        SizedBox(width: 16),
                         Container(
-                          padding: EdgeInsets.all(16.0),
-                          child: Text(
-                            foodList[index].name,
-                            style: TextStyle(
-                              fontSize: 16.0,
+                          // padding: EdgeInsets.all(16.0),
+                          child: Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  foodList[index].name,
+                                  style: GoogleFonts.lato(fontSize: 16.0),
+                                ),
+                                Text(
+                                  '${foodList[index].price} ฿',
+                                  style: GoogleFonts.lato(fontSize: 12.0),
+                                ),
+                              ],
                             ),
                           ),
                         ),
